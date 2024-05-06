@@ -6,6 +6,7 @@ let cuotaPrestamoMensualConInteres;
 let interes;
 let maxCuotaMensual;
 let interesMensual;
+let historialPrestamos = [];
 
 
 function cuotaPrestamo(ingresos, egresos, interes, meses) {
@@ -98,4 +99,14 @@ if (prestamoAprobado) {
 }
 
 
+historialPrestamos.push({
+  nombre: nombre,
+  email: email,
+  ingresos: ingresos,
+  egresos: egresos,
+  monto: monto,
+  meses: meses,
+  aprobado: prestamoAprobado,
+})
 
+console.log(historialPrestamos);
