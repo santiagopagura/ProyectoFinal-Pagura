@@ -3,18 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./CSS/styles.css">
+  <script src="archivo.js" defer></script>
   <title>Banco del Sur</title>
   
 
 </head>
 <body>
   <main>
-    <h1>Banco del Sur</h1>
+    <h1 id="titulo">Banco del Sur</h1>
     <p>Bienvenido al Calculador de Prestamos de nuestro banco</p>
-    <p>Para utilizarlo, por favor siga las instrucciones.
-      Gracias!
-    </p>
+    <p>En Banco del Sur nos esforzamos cada dia para ofrecerle el mejor servicio y con las mejores tasas a nuestros valorados clientes para ayudarlos a cumplir sus sueños.</p>
+    <form id="datos-personales">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" placeholder="nombre" >
+      <label for="apellido">Apellido:</label>
+      <input type="text" id="apellido" placeholder="apellido" >
+      <label for="edad">Ingrese su fecha de nacimiento:</label>
+      <input type="date" id="edad" placeholder="edad" >
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="ingrese su email">
+      <button type="submit">Continuar</button>
+    </form>
+    <form id="generarPrestamo" class="hide">
+      <label for="number">Ingresos:</label>
+      <input type="number" id="ingresos" placeholder="ingresos" >
+      <label for="egresos">Gastos fijos:</label>
+      <input type="number" id="egresos" placeholder="egresos" >
+      <label for="monto">Indiquie cuanto dinero necesita.</label>
+      <input type="number" id="monto" placeholder="monto" >
+      <label for="tiempo">¿En cuántos meses quieres pagar? \nElige una de las siguientes opciones: \n1. Ahora 12 (C.F.T.: 20%) .\n2. Ahora 48 (C.F.T.: 60%) \n3. Ingresar cantidad de meses personalizada (Interés anual: 245%) \nIngresa el número correspondiente a tu elección.</label>
+      <input type="number" id="tiempo" placeholder="tiempo">
+
+      <button type="submit" id="solicitud">Solicitar</button>
+    </form>
+    <div id="historial"><p>Historial de calculo de prestamos solicitados:</p></div>
+    
+
   </main>
-  <script src="archivo.js" defer></script>
+  
 </body>
 </html>
