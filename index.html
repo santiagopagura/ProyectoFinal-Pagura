@@ -16,7 +16,7 @@
     <p>En Banco del Sur nos esforzamos cada dia para ofrecerle el mejor servicio y con las mejores tasas a nuestros valorados clientes para ayudarlos a cumplir sus sueños.</p>
     <form id="datos-personales">
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" placeholder="nombre" >
+      <input type="text" id="nombre" placeholder="nombre" required>
       <label for="apellido">Apellido:</label>
       <input type="text" id="apellido" placeholder="apellido" >
       <label for="edad">Ingrese su fecha de nacimiento:</label>
@@ -26,14 +26,27 @@
       <button type="submit">Continuar</button>
     </form>
     <form id="generarPrestamo" class="hide">
-      <label for="number">Ingresos:</label>
+      <label for="ingresos">Ingresos:</label>
       <input type="number" id="ingresos" placeholder="ingresos" >
+      <p id="mensajeIngresos"></p>
       <label for="egresos">Gastos fijos:</label>
       <input type="number" id="egresos" placeholder="egresos" >
+      <p id="mensajeEgresos"></p>
       <label for="monto">Indiquie cuanto dinero necesita.</label>
       <input type="number" id="monto" placeholder="monto" >
-      <label for="tiempo">¿En cuántos meses quieres pagar? \nElige una de las siguientes opciones: \n1. Ahora 12 (C.F.T.: 20%) .\n2. Ahora 48 (C.F.T.: 60%) \n3. Ingresar cantidad de meses personalizada (Interés anual: 245%) \nIngresa el número correspondiente a tu elección.</label>
-      <input type="number" id="tiempo" placeholder="tiempo">
+      <p id="mensajeMonto"></p>
+      <label for="cuotas">¿En cuántos meses quieres pagar? Elige una de las siguientes opciones del menu desplegable: 1_ Ahora 12 (C.F.T.: 20%) 2_ Ahora 48 (C.F.T.: 60%) 3_ Ingresar cantidad de meses personalizada (Interés anual: 245%) .</label>
+      <select name="tipoCuota" id="cuotas">
+        <option value="">Seleccione una opcion...</option>
+        <option value="1">Ahora 12</option>
+        <option value="2">Ahora 48</option>
+        <option value="3">Quiero mas cuotas</option>
+      </select>
+      <p id="masCuotas"></p>
+
+
+
+      <!-- <input type="number" id="tiempo" placeholder="tiempo"> -->
 
       <button type="submit" id="solicitud">Solicitar</button>
     </form>

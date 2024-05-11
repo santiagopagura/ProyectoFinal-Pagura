@@ -10,3 +10,6 @@ input {
 .hide {
   display: none;
 }
+button, select {
+  display: block;
+}
