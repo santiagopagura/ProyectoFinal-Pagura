@@ -45,9 +45,7 @@ function saludar() {
   agregoMain.insertBefore(parrafo, document.getElementById('generarPrestamo'));
 } 
 
-document
-  .getElementById(`botonContinuar`)
-  .addEventListener("submit", function(event) {
+document.getElementById("datos-personales").addEventListener("submit", function(event) {
   event.preventDefault();
   captaDatos();
   // oculto form datos-personales y muestro generarPrestamo.
@@ -55,6 +53,7 @@ document
   fToggle("generarPrestamo", "hide");
   saludar();
 });
+
 
 //SEGUNDA PARTE - FORMULARIO generarPrestamo
 
