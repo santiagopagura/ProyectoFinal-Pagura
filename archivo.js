@@ -11,6 +11,23 @@ let nombre;
 let apellido;
 let edad;
 let email;
+let datos = [];
+
+// Función para cargar los datos desde el archivo JSON
+async function cargarDatos() {
+  try {
+    const response = await fetch("blackList.json");
+    if (!response.ok) {
+      throw new Error('Error al cargar el archivo JSON');
+    }
+    datos = await response.json();
+    console.log('Datos cargados:', datos);
+  } catch (error) {
+    console.error('Error al cargar datos:', error);
+  }
+}
+
+cargarDatos();
 
 // Función para calcular la edad a partir de una fecha de nacimiento
 function calcularEdad(fechaNacimiento) {
@@ -183,28 +200,63 @@ cantidadCuotas.addEventListener("change", (event) => {
   cuotas();
 });
 
+
 function generarPrestamo() {
-  if ( ingresoValido === false || egresoValido === false || montoValido === false || cuotasValido === false) {
-    mostrarBorrarMensajeDOM("mostrar", "solicitud", `Algunos de los datos no son validos. Por favor verifique y vuelva a intentar.`); 
-    return ;
+  if (ingresoValido === false || egresoValido === false || montoValido === false || cuotasValido === false) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Datos inválidos',
+      text: 'Algunos de los datos no son válidos. Por favor, verifique y vuelva a intentar.',
+      showConfirmButton: true
+    });
+    return;
   }
 
   prestamoAprobado = cuotaPrestamo(ingresos, egresos, interes, meses);
   let cuotaPrestamoMensualConInteresRedondeado = Math.round(cuotaPrestamoMensualConInteres * 100) / 100;
 
+  let solicitudCompleta = () => {
+    if (datos.some(d => d.nombre === nombre && d.apellido === apellido)) {
+      Swal.fire({
+        icon: 'info',
+        title: '¿¡Profes!',
+        text: 'Este préstamo no es un soborno.',
+        showConfirmButton: true
+      });
+    }
+  };
+
   if (prestamoAprobado) {
-    mostrarBorrarMensajeDOM("mostrar", "solicitud",`El prestamo por $${monto} esta aprobado. El dinero de la cuota mensual ( $${cuotaPrestamoMensualConInteresRedondeado}) se debitara de tu cuenta automaticanmente desde el proximo mes y durante los proximos ${meses} meses.
-    Gracias por elergirnos.`);
+    Swal.fire({
+      icon: 'success',
+      title: 'Préstamo Aprobado',
+      html: `El préstamo por $${monto} está aprobado. El dinero de la cuota mensual ($${cuotaPrestamoMensualConInteresRedondeado}) se debitará de tu cuenta automáticamente desde el próximo mes y durante los próximos ${meses} meses.<br>Gracias por elegirnos.`,
+      showConfirmButton: true
+    }).then(solicitudCompleta);
   } else {
-    mostrarBorrarMensajeDOM("mostrar", "solicitud", "El prestamo no fue aprobado. No se encuentran dadas las condiciones para otorgarle el credito. Gracias por su consulta.");
+    Swal.fire({
+      icon: 'error',
+      title: 'Préstamo Rechazado',
+      text: 'El préstamo no fue aprobado. No se encuentran dadas las condiciones para otorgarle el crédito. Gracias por su consulta.',
+      showConfirmButton: true
+    });
   }
-guardarHistorial();
-actualizarHistorial();
+  
+  guardarHistorial();
+  actualizarHistorial();
 }
+
+
+
+
+
+
+
 
 function guardarHistorial() {
  
   let historialPrestamos = JSON.parse(localStorage.getItem('historialPrestamos')) || [];
+//prestamoAprobado = prestamoAprobado ? "APROBADO" : "RECHAZADO"
   prestamoAprobado ? prestamoAprobado = "APROBADO" :prestamoAprobado = "RECHAZADO";
 
   historialPrestamos.push({
