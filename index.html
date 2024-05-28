@@ -22,15 +22,15 @@
     <form id="datos-personales">
 
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" placeholder="nombre"  >
+      <input type="text" id="nombre" placeholder="nombre"  required>
       
       <label for="apellido">Apellido:</label>
-      <input type="text" id="apellido" placeholder="apellido"  >
+      <input type="text" id="apellido" placeholder="apellido"  required>
 
       <label for="fechaNacimiento">Ingrese su fecha de nacimiento:</label>
-      <input type="date" id="fechaNacimiento" >
+      <input type="date" id="fechaNacimiento" required>
       <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="ingrese su email" >
+      <input type="email" id="email" placeholder="ingrese su email" required>
 
       <button id="botonContinuar" type="submit">Continuar</button>
     </form>
@@ -38,20 +38,20 @@
     <!-- datos del prestamo -->
     <form id="generarPrestamo" class="hide">
       <label for="ingresos">Ingresos:</label>
-      <input type="number" id="ingresos" placeholder="ingresos"  >
+      <input type="number" id="ingresos" placeholder="ingresos" required >
 
       <p id="mensajeIngresos"></p>
 
       <label for="egresos">Gastos fijos:</label>
-      <input type="number" id="egresos" placeholder="egresos"  >
+      <input type="number" id="egresos" placeholder="egresos" required >
       <p id="mensajeEgresos"></p>
 
       <label for="monto">Indiquie cuanto dinero necesita.</label>
-      <input type="number" id="monto" placeholder="monto"  >
+      <input type="number" id="monto" placeholder="monto" required >
       <p id="mensajeMonto"></p>
 
       <label for="cuotas">¿En cuántos meses quieres pagar? Elige una de las siguientes opciones del menu desplegable: 1_ Ahora 12 (C.F.T.: 20%) 2_ Ahora 48 (C.F.T.: 60%) 3_ Ingresar cantidad de meses personalizada (Interés anual: 245%) .</label>
-      <select name="tipoCuota" id="cuotas" >
+      <select name="tipoCuota" id="cuotas" required>
         <option value="">Seleccione una opcion...</option>
         <option value="1">Ahora 12</option>
         <option value="2">Ahora 48</option>
