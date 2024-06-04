@@ -29,6 +29,16 @@ async function cargarDatos() {
 
 cargarDatos();
 
+// Función para calcular la edad a partir de una fecha de nacimiento y usando Luxon
+function calcularEdad(fechaNacimiento) {
+  const dateTime = luxon.DateTime;
+  const hoy = dateTime.now();
+  let fechaNac = dateTime.fromFormat(fechaNacimiento, "yyyy-MM-dd");
+  edad = Math.floor(hoy.diff(fechaNac, "years").years);
+  return edad;
+}
+
+/*
 // Función para calcular la edad a partir de una fecha de nacimiento
 function calcularEdad(fechaNacimiento) {
   let fechaActual = new Date();
@@ -39,6 +49,8 @@ function calcularEdad(fechaNacimiento) {
   edad = Math.floor(edadEnAnios);
   return edad;
 }
+*/
+
 
 // fToggle cambia la clase del id indicado.
 function fToggle(elementoID, clase) {
